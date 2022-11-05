@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Multicaret\Acquaintances\Traits;
+namespace HeiHeiHallo\Acquaintances\Traits;
 
-use Multicaret\Acquaintances\Interaction;
+use HeiHeiHallo\Acquaintances\Interaction;
 
 /**
  * Trait CanBeRated.

@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Event;
 use HeiHeiHallo\Acquaintances\Interaction;
 
 /**
- * Trait CanSubscribe.
+ * Trait CanDislike.
  */
-trait CanSubscribe
+trait CanDislike
 {
     /**
-     * Subscribe an item or items.
+     * Dislike an item or items.
      *
      * @param  int|array|\Illuminate\Database\Eloquent\Model  $targets
      * @param  string  $class
@@ -21,30 +21,30 @@ trait CanSubscribe
      *
      * @throws \Exception
      */
-    public function subscribe($targets, $class = __CLASS__)
+    public function dislike($targets, $class = __CLASS__)
     {
-        Event::dispatch('acq.subscriptions.subscribe', [$this, $targets]);
+        Event::dispatch('acq.dislikes.dislike', [$this, $targets]);
 
-        return Interaction::attachRelations($this, 'subscriptions', $targets, $class);
+        return Interaction::attachRelations($this, 'dislikes', $targets, $class);
     }
 
     /**
-     * Unsubscribe an item or items.
+     * Undislike an item or items.
      *
      * @param  int|array|\Illuminate\Database\Eloquent\Model  $targets
      * @param  string  $class
      *
      * @return array
      */
-    public function unsubscribe($targets, $class = __CLASS__)
+    public function undislike($targets, $class = __CLASS__)
     {
-        Event::dispatch('acq.subscriptions.unsubscribe', [$this, $targets]);
+        Event::dispatch('acq.dislikes.undislike', [$this, $targets]);
 
-        return Interaction::detachRelations($this, 'subscriptions', $targets, $class);
+        return Interaction::detachRelations($this, 'dislikes', $targets, $class);
     }
 
     /**
-     * Toggle subscribe an item or items.
+     * Toggle dislike an item or items.
      *
      * @param  int|array|\Illuminate\Database\Eloquent\Model  $targets
      * @param  string  $class
@@ -53,36 +53,36 @@ trait CanSubscribe
      *
      * @throws \Exception
      */
-    public function toggleSubscribe($targets, $class = __CLASS__)
+    public function toggleDislike($targets, $class = __CLASS__)
     {
-        return Interaction::toggleRelations($this, 'subscriptions', $targets, $class);
+        return Interaction::toggleRelations($this, 'dislikes', $targets, $class);
     }
 
     /**
-     * Check if a model is subscribed to a given model.
+     * Check if a model is disliked by a given model.
      *
      * @param  int|array|\Illuminate\Database\Eloquent\Model  $target
      * @param  string  $class
      *
      * @return bool
      */
-    public function hasSubscribed($target, $class = __CLASS__)
+    public function hasDisliked($target, $class = __CLASS__)
     {
-        return Interaction::isRelationExists($this, 'subscriptions', $target, $class);
+        return Interaction::isRelationExists($this, 'dislikes', $target, $class);
     }
 
     /**
-     * Return user subscriptions.
+     * Return item dislikes.
      *
      * @param  string  $class
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function subscriptions($class = __CLASS__)
+    public function dislikes($class = __CLASS__)
     {
         return $this->morphedByMany($class, 'subject',
             config('acquaintances.tables.interactions'))
-                    ->wherePivot('relation', '=', Interaction::RELATION_SUBSCRIBE)
+                    ->wherePivot('relation', '=', Interaction::RELATION_DISLIKE)
                     ->withPivot(...Interaction::$pivotColumns)
                     ->using(Interaction::getInteractionRelationModelName())
                     ->withTimestamps();

@@ -1,25 +1,25 @@
 <?php
 
 
-namespace Multicaret\Acquaintances\Traits;
+namespace HeiHeiHallo\Acquaintances\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Event;
-use Multicaret\Acquaintances\Interaction;
-use Multicaret\Acquaintances\Models\FriendFriendshipGroups;
-use Multicaret\Acquaintances\Models\Friendship;
-use Multicaret\Acquaintances\Status;
+use HeiHeiHallo\Acquaintances\Interaction;
+use HeiHeiHallo\Acquaintances\Models\FriendFriendshipGroups;
+use HeiHeiHallo\Acquaintances\Models\Friendship;
+use HeiHeiHallo\Acquaintances\Status;
 
 /**
  * Class Friendable
- * @package Multicaret\Acquaintances\Traits
+ * @package HeiHeiHallo\Acquaintances\Traits
  */
 trait Friendable
 {
     /**
      * @param  Model  $recipient
      *
-     * @return \Multicaret\Acquaintances\Models\Friendship|false
+     * @return \HeiHeiHallo\Acquaintances\Models\Friendship|false
      */
     public function befriend(Model $recipient)
     {
@@ -174,7 +174,7 @@ trait Friendable
     /**
      * @param  Model  $recipient
      *
-     * @return \Multicaret\Acquaintances\Models\Friendship
+     * @return \HeiHeiHallo\Acquaintances\Models\Friendship
      */
     public function blockFriend(Model $recipient)
     {
@@ -209,7 +209,7 @@ trait Friendable
     /**
      * @param  Model  $recipient
      *
-     * @return \Multicaret\Acquaintances\Models\Friendship
+     * @return \HeiHeiHallo\Acquaintances\Models\Friendship
      */
     public function getFriendship(Model $recipient)
     {

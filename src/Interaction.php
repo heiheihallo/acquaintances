@@ -1,6 +1,6 @@
 <?php
 
-namespace Multicaret\Acquaintances;
+namespace HeiHeiHallo\Acquaintances;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -13,6 +13,7 @@ use stdClass;
 class Interaction
 {
     const RELATION_LIKE = 'like';
+    const RELATION_DISLIKE = 'dislike';
     const RELATION_FOLLOW = 'follow';
     const RELATION_SUBSCRIBE = 'subscribe';
     const RELATION_FAVORITE = 'favorite';
@@ -38,6 +39,8 @@ class Interaction
         'followers' => 'follow',
         'likes' => 'like',
         'likers' => 'like',
+        'dislikes' => 'dislike',
+        'dislikers' => 'dislike',
         'favoriters' => 'favorite',
         'favorites' => 'favorite',
         'subscriptions' => 'subscribe',
@@ -247,7 +250,7 @@ class Interaction
         return Interaction::getFullModelName(
             config(
                 'acquaintances.models.interaction_relation',
-                \Multicaret\Acquaintances\Models\InteractionRelation::class
+                \HeiHeiHallo\Acquaintances\Models\InteractionRelation::class
             )
         );
     }
@@ -257,7 +260,7 @@ class Interaction
         return Interaction::getFullModelName(
             config(
                 'acquaintances.models.friendship',
-                \Multicaret\Acquaintances\Models\Friendship::class
+                \HeiHeiHallo\Acquaintances\Models\Friendship::class
             )
         );
     }
@@ -267,7 +270,7 @@ class Interaction
         return Interaction::getFullModelName(
             config(
                 'acquaintances.models.friendship_groups',
-                \Multicaret\Acquaintances\Models\FriendshipGroups::class
+                \HeiHeiHallo\Acquaintances\Models\FriendshipGroups::class
             )
         );
     }

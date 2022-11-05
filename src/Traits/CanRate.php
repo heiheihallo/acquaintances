@@ -1,14 +1,14 @@
 <?php
 
 
-namespace Multicaret\Acquaintances\Traits;
+namespace HeiHeiHallo\Acquaintances\Traits;
 
 use Illuminate\Support\Facades\Event;
-use Multicaret\Acquaintances\Interaction;
+use HeiHeiHallo\Acquaintances\Interaction;
 
 /**
  * Class CanRate
- * @package Multicaret\Acquaintances\Traits
+ * @package HeiHeiHallo\Acquaintances\Traits
  */
 trait CanRate
 {

@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Multicaret\Acquaintances\Models;
+namespace HeiHeiHallo\Acquaintances\Models;
 
 use Illuminate\Database\Eloquent\Relations\MorphPivot;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use InvalidArgumentException;
-use Multicaret\Acquaintances\Interaction;
+use HeiHeiHallo\Acquaintances\Interaction;
 use Illuminate\Support\Str;
 
 /**

@@ -98,7 +98,7 @@ Laravel 5.7 and below => version 1.x (branch v1)
 Publish config and migrations:
 
 ```sh
-php artisan vendor:publish --provider="Multicaret\Acquaintances\AcquaintancesServiceProvider"
+php artisan vendor:publish --provider="HeiHeiHallo\Acquaintances\AcquaintancesServiceProvider"
 ```
 
 Configure the published config in:
@@ -120,13 +120,13 @@ php artisan migrate
 Example:
 
 ```php
-use Multicaret\Acquaintances\Traits\Friendable;
-use Multicaret\Acquaintances\Traits\CanFollow;
-use Multicaret\Acquaintances\Traits\CanBeFollowed;
-use Multicaret\Acquaintances\Traits\CanLike;
-use Multicaret\Acquaintances\Traits\CanBeLiked;
-use Multicaret\Acquaintances\Traits\CanRate;
-use Multicaret\Acquaintances\Traits\CanBeRated;
+use HeiHeiHallo\Acquaintances\Traits\Friendable;
+use HeiHeiHallo\Acquaintances\Traits\CanFollow;
+use HeiHeiHallo\Acquaintances\Traits\CanBeFollowed;
+use HeiHeiHallo\Acquaintances\Traits\CanLike;
+use HeiHeiHallo\Acquaintances\Traits\CanBeLiked;
+use HeiHeiHallo\Acquaintances\Traits\CanRate;
+use HeiHeiHallo\Acquaintances\Traits\CanBeRated;
 //...
 
 class User extends Model
@@ -151,7 +151,7 @@ All available APIs are listed below for Friendships & Interactions.
 Add `Friendable` Trait to User model.
 
 ```php
-use Multicaret\Acquaintances\Traits\Friendable;
+use HeiHeiHallo\Acquaintances\Traits\Friendable;
 
 class User extends Model
 {
@@ -408,11 +408,11 @@ $user->getPendingFriendships($group_name);
 Add `CanXXX` Traits to User model.
 
 ```php
-use Multicaret\Acquaintances\Traits\CanFollow;
-use Multicaret\Acquaintances\Traits\CanLike;
-use Multicaret\Acquaintances\Traits\CanFavorite;
-use Multicaret\Acquaintances\Traits\CanSubscribe;
-use Multicaret\Acquaintances\Traits\CanVote;
+use HeiHeiHallo\Acquaintances\Traits\CanFollow;
+use HeiHeiHallo\Acquaintances\Traits\CanLike;
+use HeiHeiHallo\Acquaintances\Traits\CanFavorite;
+use HeiHeiHallo\Acquaintances\Traits\CanSubscribe;
+use HeiHeiHallo\Acquaintances\Traits\CanVote;
 
 class User extends Model
 {
@@ -423,10 +423,10 @@ class User extends Model
 Add `CanBeXXX` Trait to target model, such as 'Post' or 'Book' ...:
 
 ```php
-use Multicaret\Acquaintances\Traits\CanBeLiked;
-use Multicaret\Acquaintances\Traits\CanBeFavorited;
-use Multicaret\Acquaintances\Traits\CanBeVoted;
-use Multicaret\Acquaintances\Traits\CanBeRated;
+use HeiHeiHallo\Acquaintances\Traits\CanBeLiked;
+use HeiHeiHallo\Acquaintances\Traits\CanBeFavorited;
+use HeiHeiHallo\Acquaintances\Traits\CanBeVoted;
+use HeiHeiHallo\Acquaintances\Traits\CanBeRated;
 
 class Post extends Model
 {
@@ -438,7 +438,7 @@ All available APIs are listed below.
 
 ### Follow
 
-#### `\Multicaret\Acquaintances\Traits\CanFollow`
+#### `\HeiHeiHallo\Acquaintances\Traits\CanFollow`
 
 ```php
 $user->follow($targets);
@@ -449,7 +449,7 @@ $user->followings(App\Post::class)->get();
 $user->isFollowing($target);
 ```
 
-#### `\Multicaret\Acquaintances\Traits\CanBeFollowed`
+#### `\HeiHeiHallo\Acquaintances\Traits\CanBeFollowed`
 
 ```php
 $object->followers()->get();
@@ -460,7 +460,7 @@ $object->followersCountReadable(); // return readable number with precision, i.e
 
 ### Rate
 
-#### `\Multicaret\Acquaintances\Traits\CanRate`
+#### `\HeiHeiHallo\Acquaintances\Traits\CanRate`
 
 ```php
 // Rate type in the following line will be
@@ -486,7 +486,7 @@ $user->setRateType('communication')->rate($target, 5);
 // Remember that you can always use the functions on $target which have this phrase "AllTypes" in them. check the below section for more details
 ```
 
-#### `\Multicaret\Acquaintances\Traits\CanBeRated`
+#### `\HeiHeiHallo\Acquaintances\Traits\CanBeRated`
 
 ```php
 $object->raters()->get();
@@ -519,7 +519,7 @@ $object->userSumRatingAllTypesReadable(); // return readable number with precisi
 
 ### Like
 
-#### `\Multicaret\Acquaintances\Traits\CanLike`
+#### `\HeiHeiHallo\Acquaintances\Traits\CanLike`
 
 ```php
 $user->like($targets);
@@ -530,7 +530,7 @@ $user->likes()->get(); // default object: App\User:class
 $user->likes(App\Post::class)->get();
 ```
 
-#### `\Multicaret\Acquaintances\Traits\CanBeLiked`
+#### `\HeiHeiHallo\Acquaintances\Traits\CanBeLiked`
 
 ```php
 $object->likers()->get();
@@ -542,7 +542,7 @@ $object->likersCountReadable(); // return readable number with precision, i.e: 5
 
 ### Favorite
 
-#### `\Multicaret\Acquaintances\Traits\CanFavorite`
+#### `\HeiHeiHallo\Acquaintances\Traits\CanFavorite`
 
 ```php
 $user->favorite($targets);
@@ -553,7 +553,7 @@ $user->favorites()->get(); // App\User:class
 $user->favorites(App\Post::class)->get();
 ```
 
-#### `\Multicaret\Acquaintances\Traits\CanBeFavorited`
+#### `\HeiHeiHallo\Acquaintances\Traits\CanBeFavorited`
 
 ```php
 $object->favoriters()->get(); // or $object->favoriters 
@@ -564,7 +564,7 @@ $object->favoritersCountReadable(); // return readable number with precision, i.
 
 ### Subscribe
 
-#### `\Multicaret\Acquaintances\Traits\CanSubscribe`
+#### `\HeiHeiHallo\Acquaintances\Traits\CanSubscribe`
 
 ```php
 $user->subscribe($targets);
@@ -575,7 +575,7 @@ $user->subscriptions()->get(); // default object: App\User:class
 $user->subscriptions(App\Post::class)->get();
 ```
 
-#### `Multicaret\Acquaintances\Traits\CanBeSubscribed`
+#### `HeiHeiHallo\Acquaintances\Traits\CanBeSubscribed`
 
 ```php
 $object->subscribers(); // or $object->subscribers 
@@ -586,7 +586,7 @@ $object->subscribersCountReadable(); // return readable number with precision, i
 
 ### Vote
 
-#### `\Multicaret\Acquaintances\Traits\CanVote`
+#### `\HeiHeiHallo\Acquaintances\Traits\CanVote`
 
 ```php
 $user->vote($target); // Vote with 'upvote' for default
@@ -600,7 +600,7 @@ $user->upvotes(App\Post::class)->get();
 $user->downvotes(App\Post::class)->get();
 ```
 
-#### `\Multicaret\Acquaintances\Traits\CanBeVoted`
+#### `\HeiHeiHallo\Acquaintances\Traits\CanBeVoted`
 
 ```php
 $object->voters()->get();
@@ -621,7 +621,7 @@ $object->downvotersCountReadable(); // return readable number with precision, i.
 
 ### View
 
-#### `\Multicaret\Acquaintances\Traits\CanView`
+#### `\HeiHeiHallo\Acquaintances\Traits\CanView`
 
 ```php
 $user->view($targets);
@@ -632,7 +632,7 @@ $user->viewers()->get(); // default object: App\User:class
 $user->viewers(App\Post::class)->get();
 ```
 
-#### `\Multicaret\Acquaintances\Traits\CanBeViewed`
+#### `\HeiHeiHallo\Acquaintances\Traits\CanBeViewed`
 
 ```php
 $object->viewers()->get();
@@ -681,7 +681,7 @@ You may use the others in the same way.
 ### Working with model
 
 ```php
-use Multicaret\Acquaintances\Models\InteractionRelation;
+use HeiHeiHallo\Acquaintances\Models\InteractionRelation;
 
 // Get most popular object
 // 1- All types

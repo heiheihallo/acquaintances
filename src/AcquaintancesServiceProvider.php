@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Multicaret\Acquaintances;
+namespace HeiHeiHallo\Acquaintances;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
