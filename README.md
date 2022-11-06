@@ -1,12 +1,13 @@
-# Laravel Acquaintances
+# HeiHallo Acquaintances
 
-[![Total Downloads](https://img.shields.io/packagist/dt/multicaret/laravel-acquaintances.svg?style=flat-square)](https://packagist.org/packages/multicaret/laravel-acquaintances)
-[![Latest Version](https://img.shields.io/github/release/multicaret/laravel-acquaintances.svg?style=flat-square)](https://github.com/multicaret/laravel-acquaintances/releases)
-[![License](https://poser.pugx.org/multicaret/laravel-acquaintances/license.svg?style=flat-square)](https://packagist.org/packages/multicaret/laravel-acquaintances)
+[![Total Downloads](https://img.shields.io/packagist/dt/heiheihallo/acquaintances.svg?style=flat-square)](https://packagist.org/packages/heiheihallo/acquaintances)
+[![Latest Version](https://img.shields.io/github/release/heiheihallo/acquaintances.svg?style=flat-square)](https://github.com/heiheihallo/acquaintances/releases)
+[![License](https://poser.pugx.org/heiheihallo/acquaintances/license.svg?style=flat-square)](https://packagist.org/packages/heiheihallo/acquaintances)
 
-<p align="center"><img src="https://cdn.multicaret.com/packages/assets/img/laravel-acquaintances.svg?updated=3"></p>
+[Forked from https://github.com/multicaret/laravel-acquaintances](https://github.com/multicaret/laravel-acquaintances)
+Added dislike functionality and CanBe/CanDo traits
 
-[Laravel News Article](https://laravel-news.com/manage-friendships-likes-and-more-with-the-acquaintances-laravel-package)
+<p align="center"><img src="https://heihallo.com/images/logo/heihallo-green.svg?updated=3"></p>
 
 Supports Laravel 9 and below, with no dependencies
 
@@ -17,6 +18,7 @@ Gives eloquent models:
 - Friendships & Groups ability
 - Interactions ability such as:
     - Likes
+    - Dislikes (custom)
     - Favorites
     - Votes (up/down)
     - Subscribe
@@ -51,6 +53,7 @@ $user2->unfriend($user1);
     * [Follow](#follow)
     * [Rate](#rate)
     * [Like](#like)
+    * [Dislike](#dislike)
     * [Favorite](#favorite)
     * [Subscribe](#subscribe)
     * [Vote](#vote)
@@ -76,6 +79,7 @@ easily design your social-like System (Facebook, Twitter, Foursquare...etc).
 - Rate a User or a Model, supporting multiple aspects
 - Follow a User or a Model
 - Like a User or a Model
+- Dislike a User or a Model
 - Subscribe a User or a Model
 - Favorite a User or a Model
 - Vote (Upvote & Downvote a User or a Model)
@@ -88,7 +92,7 @@ easily design your social-like System (Facebook, Twitter, Foursquare...etc).
 First, install the package through Composer.
 
 ```sh
-composer require multicaret/laravel-acquaintances
+composer require heiheihallo/acquaintances
 ```
 
 Laravel 5.8 and up => version 2.x (branch master)
@@ -538,6 +542,30 @@ $object->fans()->get(); // or $object->fans. it's an alias of likers()
 $object->isLikedBy($user);
 $object->likersCount(); // or as attribute $object->likers_count
 $object->likersCountReadable(); // return readable number with precision, i.e: 5.2K
+
+```
+
+### Dislike
+
+#### `\HeiHeiHallo\Acquaintances\Traits\CanDislike`
+
+```php
+$user->dislike($targets);
+$user->undislike($targets);
+$user->toggleDislike($targets);
+$user->hasDisliked($target);
+$user->dislikes()->get(); // default object: App\User:class
+$user->dislikes(App\Post::class)->get();
+```
+
+#### `\HeiHeiHallo\Acquaintances\Traits\CanBeDisliked`
+
+```php
+$object->dislikers()->get();
+$object->haters()->get(); // or $object->haters. it's an alias of dislikers()
+$object->isDislikedBy($user);
+$object->dislikersCount(); // or as attribute $object->dislikers_count
+$object->dislikersCountReadable(); // return readable number with precision, i.e: 5.2K
 ```
 
 ### Favorite
@@ -720,6 +748,8 @@ This is the list of the events fired by default for each action:
 |acq.vote.cancel                |When a an item or items get vote cancellation  |
 |acq.likes.like                 |When a an item or items get liked              |
 |acq.likes.unlike               |When a an item or items get unliked            |
+|acq.dislikes.dislike           |When a an item or items get disliked           |
+|acq.dislikes.undislike         |When a an item or items get undisliked         |
 |acq.followships.follow         |When a an item or items get followed           |
 |acq.followships.unfollow       |When a an item or items get unfollowed         |
 |acq.favorites.favorite         |When a an item or items get favored            |
@@ -734,7 +764,8 @@ This is the list of the events fired by default for each action:
 See the [CONTRIBUTING](CONTRIBUTING.md) guide.
 
 The initial version of this library was assisted by the following
-repos [laravel-friendships](https://github.com/hootlex/laravel-friendships)
+repos [laravel-acquaintances](https://github.com/multicaret/laravel-acquaintances)
+& [laravel-friendships](https://github.com/hootlex/laravel-friendships)
 & [laravel-follow](https://github.com/overtrue/laravel-follow).
 
 ### Change Log
