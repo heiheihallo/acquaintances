@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits;
+namespace HeiHeiHallo\Acquaintances\Traits;
 
 use App\Traits\CanBeDisliked;
 use HeiHeiHallo\Acquaintances\Traits\CanBeFavorited;

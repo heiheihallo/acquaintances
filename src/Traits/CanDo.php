@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits;
+namespace HeiHeiHallo\Acquaintances\Traits;
 
 use HeiHeiHallo\Acquaintances\Traits\CanFavorite;
 use HeiHeiHallo\Acquaintances\Traits\CanFollow;
