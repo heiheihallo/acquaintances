@@ -2,7 +2,7 @@
 
 namespace HeiHeiHallo\Acquaintances\Traits;
 
-use App\Traits\CanBeDisliked;
+use HeiHeiHallo\Acquaintances\Traits\CanBeDisliked;
 use HeiHeiHallo\Acquaintances\Traits\CanBeFavorited;
 use HeiHeiHallo\Acquaintances\Traits\CanBeLiked;
 use HeiHeiHallo\Acquaintances\Traits\CanBeRated;
